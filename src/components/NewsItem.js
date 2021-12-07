@@ -23,7 +23,7 @@ export class NewsItem extends Component {
                 href={newsUrl}
                 rel="noreferrer"
                 target="_blank"
-                className={`btn btn-sm btn-${this.props.mode==='dark'?'light':'dark'}`}
+                className={`btn btn-sm shadow-none btn-${this.props.mode==='dark'?'light':'dark'}`}
               >
                 Read More
               </a>

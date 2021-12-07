@@ -2,25 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export class Navbar extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     mode: 'light'
-  //   };
-  // }
-
-  // toggleMode = ()=> {
-  //   if(this.state.mode === 'light'){
-  //     this.setState({mode:'dark'});
-  //   }
-  //   else{
-  //     this.setState({mode:'light'});
-  //   }
-  //   return this.state.mode;
-  // }
-
-  
-
   render() {
     return (
       <>
