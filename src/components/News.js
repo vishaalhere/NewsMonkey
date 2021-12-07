@@ -32,7 +32,7 @@ export class News extends Component {
   }
 
   async updateNews(){
-    let url =`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=979ac22168cb4f8ab039160e74c66ed7&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    let url =`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=6faf6dd832d74820a82ad0b4386539b9&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({loading:true});
     let data = await fetch(url); //using async await to wait till it resolves the fetch function and then run the code.
     
@@ -60,7 +60,9 @@ export class News extends Component {
   };
 
   render() {
+    console.log(this.state.articles);
     return (
+      
       <div className='container my-3'>
         <h1 className={`text-center text-${this.props.mode==='dark'?'light':'dark'}`}>News Monkey - Top Headlines</h1>
         {this.state.loading && <Spinner/>} 
