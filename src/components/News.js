@@ -26,7 +26,8 @@ export class News extends Component {
       articles: [],
       loading: false,
       page: 1,
-      totalResults: 0
+      totalResults: 0,
+      hasMore: true
     };
     document.title = `${this.capitalizeFirstLetter(this.props.category)} - News Monkey`;
   }
@@ -54,14 +55,16 @@ export class News extends Component {
   fetchMoreData = async()=>{
     this.setState({page: this.state.page + 1})
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-    this.setState({loading: true})
+    this.setState({hasMore:true})
     let data = await fetch(url); //using async await to wait till it resolves the fetch function and then run the code
     let parsedData = await data.json();
+
     this.setState({
       articles: this.state.articles.concat(parsedData.articles),
       totalResults: parsedData.totalResults,
-      loading: false
+      hasMore:false
     });
+    this.setState({hasMore:false})
   }
 
   render() {
@@ -70,12 +73,12 @@ export class News extends Component {
         <h1 className={` my-4 text-center text-${this.props.mode === "dark" ? "light" : "dark"}`}>
           News Monkey - Top {this.capitalizeFirstLetter(this.props.category)} Headlines
         </h1>
-        {this.state.loading && <Spinner/>}
+
         <InfiniteScroll
           dataLength={this.state.articles.length} //This is important field to render the next data
           next={this.fetchMoreData}
           hasMore={this.state.articles.length !== this.totalResults}
-          loader = {this.state.loading && <Spinner/>}
+          loader = {this.state.hasMore && <Spinner/>}
         >
           <div className="container">
           <div className="row">
