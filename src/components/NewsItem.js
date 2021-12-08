@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 
-export class NewsItem extends Component {
-  render() {
-    let { title, description, imageUrl, newsUrl, author, date, source } = this.props;
+const NewsItem = (props)=>{
+    let { title, description, imageUrl, newsUrl, author, date, source } = props;
     return (
       <>
         <div className="my-3">
-          <div className={`card text-${this.props.mode==='dark'?'light':'dark'} bg-${this.props.mode}`} style={{ width: "18rem" }}>
-          <span className={`position-absolute top-0 translate-middle badge rounded-pill bg-${this.props.mode==='dark'?'light':'dark'} text-${this.props.mode}`} style={{left : '50%', zIndex:'1'}}>{source}
+          <div className={`card text-${props.mode==='dark'?'light':'dark'} bg-${props.mode}`} style={{ width: "18rem" }}>
+          <span className={`position-absolute top-0 translate-middle badge rounded-pill bg-${props.mode==='dark'?'light':'dark'} text-${props.mode}`} style={{left : '50%', zIndex:'1'}}>{source}
           </span>
             <img src={imageUrl} className="card-img-top" alt=".." />
             <div className="card-body">
@@ -23,7 +22,7 @@ export class NewsItem extends Component {
                 href={newsUrl}
                 rel="noreferrer"
                 target="_blank"
-                className={`btn btn-sm shadow-none btn-${this.props.mode==='dark'?'light':'dark'}`}
+                className={`btn btn-sm shadow-none btn-${props.mode==='dark'?'light':'dark'}`}
               >
                 Read More
               </a>
@@ -34,6 +33,6 @@ export class NewsItem extends Component {
     );
     
   }
-}
+
 
 export default NewsItem;
