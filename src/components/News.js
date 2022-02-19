@@ -12,7 +12,7 @@ const News = (props)=>{
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  const [articles, setArticles] = useState([])
+  const [articles, setArticles] = useState([" "])
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(1)
   const [totalResults, setTotalResults] = useState(0)
