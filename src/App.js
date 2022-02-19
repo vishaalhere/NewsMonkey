@@ -8,7 +8,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 const App = () => {
   const pageSize = 6;
   const country = "in";
-  const apiKey = process.env.REACT_APP_NEWS_API;
+
+  const apiKey =
+    process.env.NODE_ENV === "production"
+      ? process.env.REACT_APP_NEWS_API
+      : process.env.REACT_APP_NEWS_API;
+  console.log(process.env.REACT_APP_NEWS_API);
   const [mode, setMode] = useState("light");
   const [progress, setProgress] = useState(0);
 
@@ -43,7 +48,8 @@ const App = () => {
                 country={country}
                 category="general"
               />
-            }></Route>
+            }
+          ></Route>
           <Route
             exact
             path="/business"
@@ -58,7 +64,8 @@ const App = () => {
                 country={country}
                 category="business"
               />
-            }></Route>
+            }
+          ></Route>
           <Route
             exact
             path="/entertainment"
@@ -73,7 +80,8 @@ const App = () => {
                 country={country}
                 category="entertainment"
               />
-            }></Route>
+            }
+          ></Route>
           <Route
             exact
             path="/general"
@@ -88,7 +96,8 @@ const App = () => {
                 country={country}
                 category="general"
               />
-            }></Route>
+            }
+          ></Route>
           <Route
             exact
             path="/health"
@@ -103,7 +112,8 @@ const App = () => {
                 country={country}
                 category="health"
               />
-            }></Route>
+            }
+          ></Route>
           <Route
             exact
             path="/science"
@@ -118,7 +128,8 @@ const App = () => {
                 country={country}
                 category="science"
               />
-            }></Route>
+            }
+          ></Route>
           <Route
             exact
             path="/sports"
@@ -133,7 +144,8 @@ const App = () => {
                 country={country}
                 category="sports"
               />
-            }></Route>
+            }
+          ></Route>
           <Route
             exact
             path="/technology"
@@ -148,7 +160,8 @@ const App = () => {
                 country={country}
                 category="technology"
               />
-            }></Route>
+            }
+          ></Route>
         </Routes>
       </Router>
     </div>
