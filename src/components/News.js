@@ -9,24 +9,8 @@ const News = (props) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  const [articles, setArticles] = useState([
-    {
-      source: {
-        id: "bbc-news",
-        name: "BBC News",
-      },
-      author: "https://www.facebook.com/bbcnews",
-      title: "Azeem Rafiq: What England's cricket racism scandal is all about",
-      description:
-        "Azeem Rafiq says he faced years of racist abuse while playing for Yorkshire Cricket Club.",
-      url: "https://www.bbc.co.uk/news/world-59316567",
-      urlToImage:
-        "https://ichef.bbci.co.uk/news/1024/branded_news/79D4/production/_121588113_microsoftteams-image-2.png",
-      publishedAt: "2021-11-17T19:04:50Z",
-      content:
-        "Media caption, 'It's important we don't let this moment go' - Azeem Rafiq speaks to BBC sports editor Dan Roan\r\nOver the past few weeks English cricket has been hit by allegations of racism by a form… [+4167 chars]",
-    },
-  ]);
+  const article = []
+  const [articles, setArticles] = useState(article);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
@@ -87,6 +71,7 @@ const News = (props) => {
         hasMore={articles.length !== totalResults}
         loader={hasMore && <Spinner />}
       >
+        {console.log(articles.length)}
         <div className="container">
           <div className="row">
             {articles.map((element) => {
