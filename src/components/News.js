@@ -26,8 +26,8 @@ const News = (props)=>{
     let data = await fetch(url); //using async await to wait till it resolves the fetch function and then run the code.
     let parsedData = await data.json();
     props.progress(75);
-    setArticles(parsedData.articles);
-    setTotalResults(parsedData.totalResults);
+    setArticles(await parsedData.articles);
+    setTotalResults(await parsedData.totalResults);
     setLoading(false);
     props.progress(100);
   }
