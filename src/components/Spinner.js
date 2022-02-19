@@ -1,12 +1,12 @@
-import React from 'react';
-import loading from './loadingGif.gif';
+import React from "react";
+import loading from "./loadingGif.gif";
 
-const Spinner = ()=> {
-        return (
-            <div className="text-center my-3">
-                <img src={loading} alt="loading"/>
-            </div>
-        )
-}
+const Spinner = () => {
+  return (
+    <div className="text-center my-3">
+      <img src={loading} alt="loading" />
+    </div>
+  );
+};
 
 export default Spinner;

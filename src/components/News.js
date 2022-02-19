@@ -9,7 +9,7 @@ const News = (props) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  const article = []
+  const article = [];
   const [articles, setArticles] = useState(article);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -23,6 +23,7 @@ const News = (props) => {
     props.progress(30);
     let data = await fetch(url); //using async await to wait till it resolves the fetch function and then run the code.
     let parsedData = await data.json();
+
     props.progress(75);
     setArticles(parsedData.articles);
     setTotalResults(parsedData.totalResults);
@@ -59,9 +60,7 @@ const News = (props) => {
       <h1
         className={`text-center text-${
           props.mode === "dark" ? "light" : "dark"
-        }`}
-        style={{ marginTop: "4.5rem" }}
-      >
+        } my-5`}>
         News Monkey - Top {capitalizeFirstLetter(props.category)} Headlines
       </h1>
       {loading && <Spinner />}
@@ -69,14 +68,13 @@ const News = (props) => {
         dataLength={articles.length} //This is important field to render the next data
         next={fetchMoreData}
         hasMore={articles.length !== totalResults}
-        loader={hasMore && <Spinner />}
-      >
-        {console.log(articles.length)}
+        loader={hasMore && <Spinner />}>
+        {/* {console.log(articles.length)} */}
         <div className="container">
           <div className="row">
-            {articles.map((element) => {
+            {articles.map((element, index) => {
               return (
-                <div className="col-md-4" key={element.url}>
+                <div className="col-md-4 col-sm-6 my-3" key={index}>
                   <NewsItem
                     title={element.title ? element.title.slice(0, 45) : ""}
                     description={
