@@ -3,6 +3,7 @@ import NewsItem from "./NewsItem";
 import Spinner from "./Loader";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
+import mockData from "../sampleOutput.json"
 
 const News = (props) => {
   const capitalizeFirstLetter = (string) => {
@@ -22,7 +23,8 @@ const News = (props) => {
     setLoading(true);
     props.progress(30);
     let data = await fetch(url); //using async await to wait till it resolves the fetch function and then run the code.
-    let parsedData = await data.json();
+    // let parsedData = await data.json();
+    let parsedData = mockData;
 
     props.progress(75);
     setArticles(parsedData.articles);
@@ -48,7 +50,8 @@ const News = (props) => {
     setHasMore(true);
 
     let data = await fetch(url); //using async await to wait till it resolves the fetch function and then run the code
-    let parsedData = await data.json();
+    // let parsedData = await data.json();
+    let parsedData = mockData;
 
     setArticles(articles.concat(parsedData.articles));
     setTotalResults(parsedData.totalResults);
